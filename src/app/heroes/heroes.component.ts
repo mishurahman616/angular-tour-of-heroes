@@ -5,11 +5,12 @@ import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [NgFor, NgIf, UpperCasePipe, FormsModule, HeroDetailComponent],
+  imports: [NgFor, NgIf, UpperCasePipe, FormsModule, HeroDetailComponent, RouterLink],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
@@ -22,13 +23,6 @@ export class HeroesComponent {
   }
   getHeroes():void{
     this.heroService.getHeroes().subscribe(heroes=> this.heroes = heroes);
-  }
-  selectedHero?: Hero;
-
-  onSelect(hero:Hero):void{
-    this.selectedHero = hero;
-    this.messageService.add(`HeroComponent: Selected Hero id=${hero.id}`)
-    
   }
 
 }

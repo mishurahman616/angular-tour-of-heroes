@@ -7,7 +7,7 @@ import { StudentService } from '../services/student.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { json } from 'stream/consumers';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -29,11 +29,12 @@ export class DashboardComponent implements OnInit {
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
-//      this.http.get("https://localhost:7288/home/students").subscribe(data=>console.log(data));
+      this.http.get("https://localhost:7288/home/students").subscribe(data=>console.log(data));
+   //   this.getStudent();
      
   }
    getStudent() {
-    var data = fetch('https://localhost:7288/home/students').then(data=>{
+     fetch('https://localhost:7288/home/students').then(data=>{
       console.log(data);
      
     });
